@@ -7,6 +7,7 @@ import spock.lang.Unroll
 
 class Example3_DataDrivenTestingSpec extends Specification{
 
+    // Expect - Where
 
     def "maximum of two numbers (without data table)"() {
         expect:

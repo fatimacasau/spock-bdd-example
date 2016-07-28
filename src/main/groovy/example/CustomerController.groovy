@@ -12,11 +12,9 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository
 
-    @RequestMapping(method = RequestMethod.GET, value = "/customer/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Customer findById(@PathVariable Long id) {
-        customerRepository.findOne(id)
+    public Customer findByName(@PathVariable String name) {
+        customerRepository.findByName(name)
     }
 
 }

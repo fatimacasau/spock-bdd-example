@@ -13,7 +13,7 @@ public class Application {
 
         CustomerRepository customerRepository = context.getBean(CustomerRepository.class)
 
-        def c = customerRepository.save(new Customer(name:"a",lastName: "b"))
+        def c = customerRepository.save(new Customer(name:"Pepito",lastName: "Perez"))
         println c
     }
 

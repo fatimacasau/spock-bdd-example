@@ -17,29 +17,9 @@ class Example2_BlocksSpec extends Specification {
     @Autowired
     CustomerRepository customerRepository
 
-    def myName = "Fátima"
-    def myLastName = "Casaú"
-
     // Blocks & Specification as Documentation
 
-    def 'Create new customer'(){
-        given: 'Customer data'
-            def data = [name:myName, lastName: myLastName]
-        when: 'try to set data'
-            def customer = new Customer(name: data.name,lastName: data.lastName)
-        and: 'save customer data'
-            customer = customerRepository.save(customer)
-        then: 'customer is created correctly'
-            customerRepository.findByLastName(data.lastName)
-
-            // Using groovy method 'with'
-            with(customer){
-                id
-                name == myName
-                lastName == myLastName
-            }
-
-    }
+    // Given - When - Then
 
     def "Import customers from file"(){
         given: 'A file with customers data'
@@ -61,13 +41,14 @@ class Example2_BlocksSpec extends Specification {
 
     }
 
-
     // Power asserts
+
+    // Given - Expect
 
     @Ignore
     def "customer name not expected"(){
         given:'an existing customer'
-            def customer = customerRepository.findByLastName(myLastName)
+            def customer = new Customer(name:"Pepito", lastName: "Perez")
         expect: 'the myName is not expected'
             customer.name == "Patricia" // This fails
     }
